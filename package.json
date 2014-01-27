@@ -1,0 +1,28 @@
+{
+  "name": "appender",
+  "version": "0.1.0",
+  "main": "lib/appender.js",
+  "description": "''",
+  "homepage": "https://github.com/stefanbuck/appender",
+  "bugs": "https://github.com/stefanbuck/appender/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Stefan Buck",
+    "email": "git@stefanbuck.com",
+    "url": "http://stefanbuck.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanbuck/appender"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "should": "~3.1.1",
+    "mocha": "~1.17.1"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter spec"
+  }
+}
