@@ -1,5 +1,5 @@
 
-var appender = require('../lib/appender')
+var appendit = require('../lib/appendit')
   , fs = require('fs')
   , read = fs.readFileSync
   , assert = require('should');
@@ -15,7 +15,7 @@ function expected(name) {
 describe('html', function(){
 
   it('default', function(){
-    appender({
+    appendit({
       source: fixture('default.html'),
       anchor: '<!-- anchor -->',
       content: [
@@ -25,7 +25,7 @@ describe('html', function(){
   })
 
   it('already there', function(){
-    appender({
+    appendit({
       source: fixture('already_there.html'),
       anchor: '<!-- anchor -->',
       content: [
@@ -35,7 +35,7 @@ describe('html', function(){
   })
 
   it('already there multiple', function(){
-    appender({
+    appendit({
       source: fixture('already_there_multiple.html'),
       anchor: '<!-- anchor -->',
       content: [
@@ -45,7 +45,7 @@ describe('html', function(){
   })
 
   it('multiple last', function(){
-    appender({
+    appendit({
       matchIndex:'last',
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
@@ -56,7 +56,7 @@ describe('html', function(){
   })
 
   it('multiple -1', function(){
-    appender({
+    appendit({
       matchIndex: -1,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
@@ -67,7 +67,7 @@ describe('html', function(){
   })
 
   it('multiple first', function(){
-    appender({
+    appendit({
       matchIndex: 'first',
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
@@ -78,7 +78,7 @@ describe('html', function(){
   })
 
   it('multiple 0', function(){
-    appender({
+    appendit({
       matchIndex: 0,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
@@ -89,7 +89,7 @@ describe('html', function(){
   })
 
   it('multiple second', function(){
-    appender({
+    appendit({
       matchIndex: 1,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
@@ -101,19 +101,19 @@ describe('html', function(){
 
   it('without options', function(){
     (function(){
-      appender()
+      appendit()
     }).should.throw('No options are given.');
   });
 
   it('empty options', function(){
     (function(){
-      appender({})
+      appendit({})
     }).should.throw('No source given.');
   });
 
   it('options with source', function(){
     (function(){
-      appender({
+      appendit({
         source: fixture('multiple.html')
       })
     }).should.throw('No content given.');
@@ -121,7 +121,7 @@ describe('html', function(){
 
   it('options with content', function(){
     (function(){
-      appender({
+      appendit({
         source: fixture('multiple.html'),
         content: [
           '<script src="a.js"></script>'
@@ -132,7 +132,7 @@ describe('html', function(){
 
   it('options with all required parameters', function(){
     (function(){
-      appender({
+      appendit({
         source: fixture('multiple.html'),
         anchor: '<!-- anchor -->',
         content: [

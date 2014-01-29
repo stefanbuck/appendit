@@ -1,13 +1,13 @@
-#Appender [![Build Status](https://travis-ci.org/stefanbuck/appender.png?branch=master)](https://travis-ci.org/stefanbuck/appender)
+#Appendit [![Build Status](https://travis-ci.org/stefanbuck/appendit.png?branch=master)](https://travis-ci.org/stefanbuck/appendit)
 
 
 ## Installation
 
-```npm install --save appender```
+```npm install --save appendit```
 
 # Example
 
-Below a quick example how to use appender:
+Below a quick example how to use appendit:
 
 
 The ```index.html``` looks like that:
@@ -22,13 +22,13 @@ The ```index.html``` looks like that:
 	</body>
 </html>
 ```
-Call the ```appender``` function with the following parameters:
+Call the ```appendit``` function with the following parameters:
 
 ```
 var fs = require('fs');
-var appender = require('appender');
+var appendit = require('appendit');
 
-var content = appender({
+var content = appendit({
   source: fs.readFileSync('index.html', 'utf8'),
   anchor: '<!-- anchor -->',
   content: [
@@ -58,7 +58,7 @@ Output:
 Let's add a headline to the body:
 
 ```
-appender({
+appendit({
   source: fs.readFileSync('index.html', 'utf8'),
   anchor: '</body>',
   content: [
