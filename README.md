@@ -1,4 +1,4 @@
-#Appender
+#Appender [![Build Status](https://travis-ci.org/stefanbuck/appender.png?branch=master)](https://travis-ci.org/stefanbuck/appender)
 
 
 ## Installation
