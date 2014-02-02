@@ -1,4 +1,4 @@
-#Appendit [![Build Status](https://travis-ci.org/stefanbuck/appendit.png?branch=master)](https://travis-ci.org/stefanbuck/appendit)
+#Appendit [![Build Status](https://travis-ci.org/stefanbuck/appendit.png?branch=master)](https://travis-ci.org/stefanbuck/appendit) [![Coverage Status](https://coveralls.io/repos/stefanbuck/appendit/badge.png)](https://coveralls.io/r/stefanbuck/appendit)
 
 
 ## Installation
