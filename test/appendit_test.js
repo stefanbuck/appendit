@@ -4,16 +4,16 @@ var appendit = require('../lib/appendit')
   , assert = require('should');
 
 function fixture(name) {
-  return read('test/fixtures/' + name, 'utf8').replace(/\r/g, '');
+  return read('test/fixtures/' + name, 'utf8');
 }
 
 function expected(name) {
-  return read('test/expected/' + name, 'utf8').replace(/\r/g, '');
+  return read('test/expected/' + name, 'utf8');
 }
 
-var equalHelper = function (options, fixtureFile, expectedFile) {
-  options.source = fixture(fixtureFile);
-  appendit(options).should.equal(expected(expectedFile));
+var equalHelper = function (options, fixtureFilename, expectedFilename) {
+  options.source = fixture(fixtureFilename);
+  appendit(options).should.equal(expected(expectedFilename));
 }
 
 describe('html', function () {
@@ -28,7 +28,7 @@ describe('html', function () {
     equalHelper(options, 'single.html', 'single.html');
   })
 
-  it('should append two script tags.', function () {
+  it('should append two script tags', function () {
     var options = {
       anchor: '<!-- anchor -->',
       content: [
@@ -39,7 +39,7 @@ describe('html', function () {
     equalHelper(options, 'single.html', 'single_add_multiple.html');
   });
 
-  it('shouldn\'t append a script tag.', function () {
+  it('shouldn\'t append a script tag', function () {
     var options = {
       anchor: '<!-- anchor -->',
       content: [
@@ -49,7 +49,7 @@ describe('html', function () {
     equalHelper(options, 'single.html', 'single.html');
   })
 
-  it('shouldn\'t append any script tag.', function () {
+  it('shouldn\'t append any script tag', function () {
     var options = {
       anchor: '<!-- anchor -->',
       content: [
@@ -118,7 +118,7 @@ describe('html', function () {
     equalHelper(options, 'multiple.html', 'multiple_second.html');
   })
 
-  it('should append the same script tag again.', function () {
+  it('should append the same script tag again', function () {
     var options = {
       anchor: '<!-- anchor -->',
       check: false,
