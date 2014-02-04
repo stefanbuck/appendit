@@ -1,4 +1,3 @@
-
 var appendit = require('../lib/appendit')
   , fs = require('fs')
   , read = fs.readFileSync
@@ -12,115 +11,146 @@ function expected(name) {
   return read('test/expected/' + name, 'utf8').replace(/\r/g, '');
 }
 
-describe('html', function(){
+var equalHelper = function (options, fixtureFile, expectedFile) {
+  options.source = fixture(fixtureFile);
+  appendit(options).should.equal(expected(expectedFile));
+}
 
-  it('default', function(){
-    appendit({
-      source: fixture('default.html'),
+describe('html', function () {
+
+  it('should append a script tag', function () {
+    var options = {
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('default.html'));
+    };
+    equalHelper(options, 'single.html', 'single.html');
   })
 
-  it('already there', function(){
-    appendit({
-      source: fixture('already_there.html'),
+  it('should append two script tags.', function () {
+    var options = {
+      anchor: '<!-- anchor -->',
+      content: [
+        '<script src="a.js"></script>',
+        '<script src="b.js"></script>'
+      ]
+    };
+    equalHelper(options, 'single.html', 'single_add_multiple.html');
+  });
+
+  it('shouldn\'t append a script tag.', function () {
+    var options = {
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('already_there.html'));
+    };
+    equalHelper(options, 'single.html', 'single.html');
   })
 
-  it('already there multiple', function(){
-    appendit({
-      source: fixture('already_there_multiple.html'),
+  it('shouldn\'t append any script tag.', function () {
+    var options = {
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('already_there_multiple.html'));
+    };
+    equalHelper(options, 'multiple_with_content.html', 'multiple_with_content.html');
   })
 
-  it('multiple last', function(){
-    appendit({
-      matchIndex:'last',
-      source: fixture('multiple.html'),
+  it('should append a script tag on the last anchor position. [matchIndex: \'last\']', function () {
+    var options = {
+      matchIndex: 'last',
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('multiple_last.html'));
+    };
+    equalHelper(options, 'multiple.html', 'multiple_last.html');
   })
 
-  it('multiple -1', function(){
-    appendit({
+  it('should append a script tag on the last anchor position. [matchIndex: -1]', function () {
+    var options = {
       matchIndex: -1,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('multiple_last.html'));
+    };
+    equalHelper(options, 'multiple.html', 'multiple_last.html');
   })
 
-  it('multiple first', function(){
-    appendit({
+  it('should append a script tag on the fist anchor position. [matchIndex: \'first\']', function () {
+    var options = {
       matchIndex: 'first',
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('multiple_first.html'));
+    };
+    equalHelper(options, 'multiple.html', 'multiple_first.html');
   })
 
-  it('multiple 0', function(){
-    appendit({
+  it('should append a script tag on the fist anchor position. [matchIndex: 0]', function () {
+    var options = {
       matchIndex: 0,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('multiple_first.html'));
+    };
+    equalHelper(options, 'multiple.html', 'multiple_first.html');
   })
 
-  it('multiple second', function(){
-    appendit({
+  it('should append a script tag on the second anchor position. [matchIndex: 1]', function () {
+    var options = {
       matchIndex: 1,
       source: fixture('multiple.html'),
       anchor: '<!-- anchor -->',
       content: [
         '<script src="a.js"></script>'
       ]
-    }).should.equal(expected('multiple_second.html'));
+    };
+    equalHelper(options, 'multiple.html', 'multiple_second.html');
   })
 
-  it('without options', function(){
-    (function(){
+  it('should append the same script tag again.', function () {
+    var options = {
+      anchor: '<!-- anchor -->',
+      check: false,
+      content: [
+        '<script src="a.js"></script>'
+      ]
+    };
+    equalHelper(options, 'single_with_content.html', 'single_insert.html');
+  });
+
+  it('without options', function () {
+    (function () {
       appendit()
     }).should.throw('No options are given.');
   });
 
-  it('empty options', function(){
-    (function(){
+  it('empty options', function () {
+    (function () {
       appendit({})
     }).should.throw('No source given.');
   });
 
-  it('options with source', function(){
-    (function(){
+  it('options with source', function () {
+    (function () {
       appendit({
         source: fixture('multiple.html')
       })
     }).should.throw('No content given.');
   });
 
-  it('options with content', function(){
-    (function(){
+  it('options with content', function () {
+    (function () {
       appendit({
         source: fixture('multiple.html'),
         content: [
@@ -130,8 +160,8 @@ describe('html', function(){
     }).should.throw('No anchor given.');
   });
 
-  it('options with all required parameters', function(){
-    (function(){
+  it('options with all required parameters', function () {
+    (function () {
       appendit({
         source: fixture('multiple.html'),
         anchor: '<!-- anchor -->',
