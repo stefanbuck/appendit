@@ -129,6 +129,17 @@ describe('html', function () {
     equalHelper(options, 'single_with_content.html', 'single_insert.html');
   });
 
+  it('plaintext', function () {
+    var options = {
+      anchor: '#Changelog',
+      insertAfter: true,
+      content: [
+        '\n## v1.1.0\nSecond release'
+      ]
+    };
+    equalHelper(options, 'simple.md', 'simple.md');
+  });
+
   it('without options', function () {
     (function () {
       appendit()

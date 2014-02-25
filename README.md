@@ -1,5 +1,6 @@
 #Appendit [![NPM version](https://badge.fury.io/js/appendit.png)](http://badge.fury.io/js/appendit) [![Build Status](https://travis-ci.org/stefanbuck/appendit.png?branch=master)](https://travis-ci.org/stefanbuck/appendit) [![Coverage Status](https://coveralls.io/repos/stefanbuck/appendit/badge.png)](https://coveralls.io/r/stefanbuck/appendit) [![Dependency Status](https://david-dm.org/stefanbuck/appendit.png?theme=shields.io)](https://david-dm.org/stefanbuck/appendit)
 
+Appendit allows you easily to add text at a specific line. It will works with any plain text format like ```.txt``` ```.md``` ```.js``` ...
 
 ## Installation
 
