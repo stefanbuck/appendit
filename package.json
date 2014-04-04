@@ -5,7 +5,7 @@
   "description": "",
   "homepage": "https://github.com/stefanbuck/appendit",
   "bugs": "https://github.com/stefanbuck/appendit/issues",
-  "license": "MIT",
+  "license": "BSD",
   "author": {
     "name": "Stefan Buck",
     "email": "git@stefanbuck.com",

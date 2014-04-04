@@ -4,16 +4,18 @@ Appendit allows you easily to add text at a specific line. It will works with an
 
 ## Installation
 
-```npm install --save appendit```
+```bash
+npm install appendit
+```
 
-# Example
+## Example
 
 Below a quick example how to use appendit:
 
 
 The ```index.html``` looks like that:
 
-```
+```html
 <html>
 	<head>
 		<title></title>
@@ -25,7 +27,7 @@ The ```index.html``` looks like that:
 ```
 Call the ```appendit``` function with the following parameters:
 
-```
+```js
 var fs = require('fs');
 var appendit = require('appendit');
 
@@ -42,7 +44,7 @@ fs.writeFileSync('index.html', content);
 
 Output: 
 
-```
+```html
 <html>
 	<head>
 		<title></title>
@@ -58,7 +60,7 @@ Output:
 
 Let's add a headline to the body:
 
-```
+```js
 appendit({
   source: fs.readFileSync('index.html', 'utf8'),
   anchor: '</body>',
@@ -70,7 +72,7 @@ appendit({
 
 Output: 
 
-```
+```html
 <html>
 	<head>
 		<title></title>
@@ -83,5 +85,11 @@ Output:
 </html>
 ```
 
-# Testing
-Running ```npm test```will run the unit tests with mocha
+## Testing
+Running ```npm test``` will run the unit tests with mocha.
+
+## License
+
+This program contains source code from the [Yeoman](https://github.com/yeoman) Project, released under the BSD.
+
+[BSD license](http://opensource.org/licenses/bsd-license.php)
