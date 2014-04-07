@@ -2,7 +2,7 @@
   "name": "appendit",
   "version": "0.1.2",
   "main": "lib/appendit.js",
-  "description": "",
+  "description": "Append text to a specific line",
   "homepage": "https://github.com/stefanbuck/appendit",
   "bugs": "https://github.com/stefanbuck/appendit/issues",
   "license": "BSD",
